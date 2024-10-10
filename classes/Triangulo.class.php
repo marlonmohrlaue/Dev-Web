@@ -87,7 +87,7 @@ class Triangulo
             $parametros_forma = [
                 ':cor' => $this->cor,
                 ':id_unidade' => $this->getUnidade()->getIdUnidade() // Certifique-se de que a unidade existe
-            ];
+            ];  
             Database::executar($sql_forma, $parametros_forma);
 
             // Obter o último ID da tabela formas

@@ -102,59 +102,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao']) && $_POST['aca
 
         <h2>Triângulos Isósceles Desenhados</h2>
         <div class="row" style="display: flex; flex-wrap: wrap;">
-    <?php
-    foreach ($lista as $trianguloIsosceles) {
-        $lado = $trianguloIsosceles->getLado1();
-        $base = $trianguloIsosceles->getLado2();
-        $unidade = $trianguloIsosceles->getUnidade()->getNome();
-        $cor = $trianguloIsosceles->getCor();
+            <?php
+            foreach ($lista as $trianguloIsosceles) {
+                $lado = $trianguloIsosceles->getLado1();
+                $base = $trianguloIsosceles->getLado2();
+                $unidade = $trianguloIsosceles->getUnidade()->getNome();
+                $cor = $trianguloIsosceles->getCor();
 
-        // Calcular a altura
-        $altura = sqrt(($lado * $lado) - (($base * 0.5) * ($base * 0.5)));
+                // Calcular a altura
+                $altura = sqrt(($lado * $lado) - (($base * 0.5) * ($base * 0.5)));
 
-        // Calcular o fator de conversão baseado na unidade selecionada
-        $fatorConversao = match($unidade) {
-            'mm' => 3.77953,
-            'cm' => 37.7953,
-            'in' => 96,
-            'pt' => 1.33333,
-            'pc' => 16,
-            'px' => 1,
-            'em' => 16, // ajuste conforme necessário
-            'rem' => 16, // ajuste conforme necessário
-            'vw' => 1, // porcentagem da viewport
-            'vh' => 1, // porcentagem da viewport
-            'vmin' => 1, // porcentagem da viewport
-            'vmax' => 1, // porcentagem da viewport
-            default => 1, // px
-        };
+                // Calcular o fator de conversão baseado na unidade selecionada
+                $fatorConversao = match ($unidade) {
+                    'mm' => 3.77953,
+                    'cm' => 37.7953,
+                    'in' => 96,
+                    'pt' => 1.33333,
+                    'pc' => 16,
+                    'px' => 1,
+                    'em' => 16, // ajuste conforme necessário
+                    'rem' => 16, // ajuste conforme necessário
+                    'vw' => 1, // porcentagem da viewport
+                    'vh' => 1, // porcentagem da viewport
+                    'vmin' => 1, // porcentagem da viewport
+                    'vmax' => 1, // porcentagem da viewport
+                    default => 1, // px
+                };
 
-        // Converter todas as dimensões para pixels
-        $ladoPx = $lado * $fatorConversao;
-        $basePx = $base * $fatorConversao;
-        $alturaPx = $altura * $fatorConversao;
+                // Converter todas as dimensões para pixels
+                $ladoPx = $lado * $fatorConversao;
+                $basePx = $base * $fatorConversao;
+                $alturaPx = $altura * $fatorConversao;
 
-        // Calcular o perímetro e a área em pixels
-        $area = ($basePx * $alturaPx) / 2;
-        $perimetro = (2 * $ladoPx) + $basePx;
+                // Calcular a área e o perímetro em pixels
+                $area = ($basePx * $alturaPx) / 2;
+                $perimetro = (2 * $ladoPx) + $basePx;
 
-        // Calcular os pontos do triângulo isósceles
-        $points = "0,$alturaPx $basePx,$alturaPx " . ($basePx * 0.5) . ",0";
+                // Calcular os pontos do triângulo isósceles
+                $points = "0,$alturaPx $basePx,$alturaPx " . ($basePx * 0.5) . ",0";
 
-        echo "<div class='col-md-4' style='margin-bottom: 20px;'>"; // Adiciona margem inferior
-        echo "<svg width='100%' height='" . ($alturaPx + 20) . "px'>"; // A altura do SVG se ajusta à altura do triângulo
-        echo "<polygon points='$points' style='fill:$cor;stroke:black;stroke-width:1' />";
-        echo "</svg>";
-        echo "<p>Lado: $lado $unidade</p>";
-        echo "<p>Base: $base $unidade</p>";
-        echo "<p>Cor: $cor</p>";
-        echo "<p>Área: " . number_format($area, 2) . " " . $unidade . "²</p>";
-        echo "<p>Perímetro: " . number_format($perimetro, 2) . " " . $unidade . "</p>";
-        echo "<a href='delete.php?id=" . $trianguloIsosceles->getId() . "' class='btn btn-danger btn-sm'>Excluir</a> ";
-        echo "</div>";
-    }
-    ?>
-</div>
+                echo "<div class='col-md-4' style='margin-bottom: 20px;'>"; // Adiciona margem inferior
+                echo "<svg width='100%' height='" . ($alturaPx + 20) . "px'>"; // A altura do SVG se ajusta à altura do triângulo
+                echo "<polygon points='$points' style='fill:$cor;stroke:black;stroke-width:1' />";
+                echo "</svg>";
+                echo "<p>Lado: $lado $unidade</p>";
+                echo "<p>Base: $base $unidade</p>";
+                echo "<p>Cor: $cor</p>";
+                echo "<p>Área: " . number_format($area, 2) . " " . $unidade . "²</p>";
+                echo "<p>Perímetro: " . number_format($perimetro, 2) . " " . $unidade . "</p>";
+                echo "<a href='delete.php?id=" . $trianguloIsosceles->getId() . "' class='btn btn-danger btn-sm'>Excluir</a> ";
+                echo "</div>";
+            }
+            ?>
+        </div>
 
 
     </div>

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao']) && $_POST['aca
         $trianguloIsosceles = new TrianguloIsosceles(0, $lado1, $lado2, $cor, $unidade);
         $trianguloIsosceles->incluir($id_triangulo);
         // Redirecionar ou mostrar mensagem de sucesso
-        header("Location: index4.php");
+        header("Location: index.php");
         exit();
     } catch (Exception $e) {
         echo "Erro ao salvar: " . $e->getMessage();

@@ -15,7 +15,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
-            header("Location: index4.php");
+            header("Location: index.php");
             exit(); // Adiciona exit para evitar que o script continue
         } else {
             echo "Erro ao excluir o registro.";

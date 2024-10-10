@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao']) && $_POST['aca
         $trianguloEscaleno = new TrianguloEscaleno(0, $lado1, $lado2, $lado3, $cor, $unidade); // Passa o ID do triângulo
         $trianguloEscaleno->incluir($id_triangulo);
         // Redirecionar ou mostrar mensagem de sucesso
-        header("Location: index5.php"); // Altere para a página desejada
+        header("Location: index.php"); // Altere para a página desejada
         exit();
     } catch (Exception $e) {
         echo "Erro ao salvar: " . $e->getMessage();

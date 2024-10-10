@@ -12,7 +12,7 @@ require_once("../classes/TrianguloEquilatero.class.php");
 // Verifica se a requisição GET foi feita para buscar triângulos
 $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 0;
-$lista = Triangulo::listar($tipo, $busca); // Busca os triângulos conforme a busca
+//$lista = Triangulo::listar($tipo, $busca); // Busca os triângulos conforme a busca
 
 ?>
 

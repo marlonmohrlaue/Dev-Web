@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao']) && $_POST['aca
         $trianguloEquilatero->incluir($id_triangulo); // Passa o ID do triângulo
 
         // Redirecionar ou mostrar mensagem de sucesso
-        header("Location: index3.php");
+        header("Location: index.php");
         exit();
     } catch (Exception $e) {
         echo "Erro ao salvar: " . $e->getMessage();
